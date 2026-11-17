@@ -1,0 +1,659 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f1f4f7;
+  color: #102e5c;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+}
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.header {
+  height: 85px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border-bottom: 1px solid #dce4ed;
+  position: relative;
+  z-index: 100;
+}
+
+.logo h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #102e5c;
+}
+
+.logo span {
+  color: #FF8A00;
+}
+
+.logo small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: #7891b2;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: #102e5c;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.header nav a:hover {
+  color: #0872d3;
+}
+
+.header nav a:first-child {
+  color: #0872d3;
+  font-weight: 700;
+  border-bottom: 2px solid #0872d3;
+  padding-bottom: 10px;
+}
+
+/* ========================================
+   MENU SUSPENSO
+======================================== */
+
+.menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: #102e5c;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.menu-button:hover {
+  color: #0872d3;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 18px);
+  right: 0;
+  width: 260px;
+  background: #ffffff;
+  border: 1px solid #e2eaf2;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(16, 46, 92, 0.13);
+  z-index: 1000;
+  overflow: hidden;
+  animation: menuEntrada 0.25s ease;
+}
+
+.dropdown-header {
+  padding: 20px 20px 15px;
+  background: #f1f6fc;
+}
+
+.dropdown-header strong {
+  display: block;
+  font-size: 15px;
+  color: #102e5c;
+  margin-bottom: 5px;
+}
+
+.dropdown-header small {
+  font-size: 11px;
+  color: #7891b2;
+}
+
+.dropdown-options {
+  padding: 8px;
+}
+
+.dropdown-options a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+  text-decoration: none;
+  color: #102e5c;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.dropdown-options a:hover {
+  background: #edf5ff;
+  color: #0872d3;
+}
+
+.profile-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8f3ff;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.profile-arrow {
+  margin-left: auto;
+  color: #0872d3;
+  font-size: 22px;
+}
+
+@keyframes menuEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   PRIMEIRA SEÇÃO - HERO
+======================================== */
+
+.hero {
+  min-height: clamp(245px, 24vw, 360px);
+  display: grid;
+  grid-template-columns: 52% 48%;
+  align-items: center;
+  padding: 0 0 0 6%;
+  gap: 0;
+  overflow: hidden;
+}
+
+.hero-content {
+  padding: 25px 30px 25px 0;
+  max-width: 620px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: clamp(30px, 2.3vw, 40px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #102e5c;
+}
+
+.hero-content h1 span {
+  color: #0872d3;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+}
+
+.hero-content p {
+  max-width: 490px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #536b8b;
+  margin-bottom: 23px;
+}
+
+/* ========================================
+   BOTÕES
+======================================== */
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons button {
+  padding: 13px 19px;
+  border: none;
+  border-radius: 10px;
+  background: #0868c9;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-buttons button:hover {
+  background: #0755a4;
+  transform: translateY(-2px);
+}
+
+.hero-buttons button:last-child {
+  background: #ffffff;
+  color: #0868c9;
+  border: 1px solid #d5e2f0;
+}
+
+.hero-buttons button:last-child:hover {
+  background: #e8f2fc;
+}
+
+/* ========================================
+   IMAGEM DA MENINA E DA RAPOSA
+======================================== */
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 245px;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #f1f4f7 0%,
+    rgba(241, 244, 247, 0.88) 8%,
+    rgba(241, 244, 247, 0.35) 25%,
+    transparent 48%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+/* ========================================
+   DIFERENCIAIS DO PROJETO
+======================================== */
+
+.differentials {
+  margin: 0 5%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  background: #f0f6fd;
+  border-radius: 16px;
+}
+
+.differential-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 15px;
+  min-width: 0;
+}
+
+.differential-item:not(:last-child) {
+  border-right: 1px solid #c5d1df;
+}
+
+.differential-icon {
+  flex-shrink: 0;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 39px;
+}
+
+.differential-icon.blue {
+  background: #d8f3ff;
+  color: #0872d3;
+}
+
+.differential-icon.orange {
+  background: #ffe6dc;
+  color: #f16b4c;
+}
+
+.differential-icon.green {
+  background: #c8f6e9;
+  color: #00856f;
+}
+
+.differential-icon.purple {
+  background: #e9e5ff;
+  color: #6759b8;
+}
+
+.differential-item h3 {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.differential-item p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #536b8b;
+}
+
+/* ========================================
+   CONHECER PARA INCLUIR
+======================================== */
+
+.about-section {
+  padding: 65px 5%;
+  display: grid;
+  grid-template-columns: 36% 64%;
+  align-items: center;
+  gap: 35px;
+  background: #f1f4f7;
+  scroll-margin-top: 20px;
+}
+
+.about-content {
+  max-width: 440px;
+}
+
+.section-label {
+  display: block;
+  color: #0872d3;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.about-content h2 {
+  font-size: 29px;
+  line-height: 1.35;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #102e5c;
+}
+
+.about-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #102e5c;
+  margin-bottom: 8px;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #0872d3;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.text-link span {
+  font-size: 22px;
+  transition: 0.2s;
+}
+
+.text-link:hover span {
+  transform: translateX(5px);
+}
+
+/* ========================================
+   CARDS DOS TEMAS
+======================================== */
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+}
+
+.topic-card {
+  min-height: 205px;
+  padding: 16px;
+  background: #f1f6fc;
+  border: 1px solid #8298b2;
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(16, 46, 92, 0.09);
+  border-color: #0872d3;
+}
+
+.topic-number {
+  display: block;
+  font-size: 25px;
+  font-weight: 800;
+  color: #aebbd0;
+  margin-bottom: 8px;
+}
+
+.topic-card h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0872d3;
+  margin-bottom: 17px;
+}
+
+.topic-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #102e5c;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLETS
+======================================== */
+
+@media (max-width: 1100px) {
+  .differentials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .differential-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .differential-item:nth-child(-n + 2) {
+    border-bottom: 1px solid #c5d1df;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content {
+    max-width: 650px;
+  }
+
+  .topics-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header nav {
+    gap: 20px;
+  }
+
+  .hero {
+    grid-template-columns: 52% 48%;
+    min-height: 280px;
+    padding-left: 5%;
+  }
+
+  .hero-content {
+    padding-right: 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-content p {
+    font-size: 13px;
+  }
+
+  .hero-image {
+    min-height: 280px;
+  }
+
+  .differential-item {
+    padding: 10px;
+  }
+
+  .differential-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 32px;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - CELULARES
+======================================== */
+
+@media (max-width: 700px) {
+  .header {
+    height: 75px;
+    padding: 0 5%;
+  }
+
+  .header nav {
+    display: none;
+  }
+
+  .logo h2 {
+    font-size: 23px;
+  }
+
+  .dropdown-menu {
+    width: 250px;
+    right: -5px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 30px 6%;
+    min-height: auto;
+    gap: 10px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 10px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 600 / 225;
+  }
+
+  .hero-image::before {
+    display: none;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+
+  .differentials {
+    margin: 0 5%;
+    padding: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .differential-item {
+    padding: 14px 8px;
+    border-right: none !important;
+    border-bottom: 1px solid #c5d1df;
+  }
+
+  .differential-item:last-child {
+    border-bottom: none;
+  }
+
+  .about-section {
+    padding: 45px 6%;
+    gap: 25px;
+  }
+
+  .about-content h2 {
+    font-size: 25px;
+  }
+
+  .topics-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .topic-card {
+    min-height: auto;
+  }
+}

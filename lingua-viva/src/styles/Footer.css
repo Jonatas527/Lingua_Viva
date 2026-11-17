@@ -1,0 +1,154 @@
+
+/* ========================================
+   RODAPÉ - LÍNGUA VIVA
+======================================== */
+
+.footer {
+  width: 100%;
+  background: #f4f7fd;
+  padding: 25px 5% 0;
+  color: #102e5c;
+}
+
+.footer-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 5px 22px;
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.9fr 1fr;
+  gap: 35px;
+}
+
+/* LOGO */
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.footer-mascot {
+  font-size: 25px;
+}
+
+.footer-logo h2 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #102e5c;
+}
+
+.footer-logo h2 span {
+  color: #FF8A00;
+}
+
+.footer-brand p {
+  max-width: 240px;
+  color: #6685b2;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* COLUNAS */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-column h3 {
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  color: #102e5c;
+}
+
+.footer-column a {
+  color: #6685b2;
+  font-size: 11px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-column a:hover {
+  color: #0872d3;
+}
+
+.footer-column p {
+  max-width: 210px;
+  color: #6685b2;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* PARTE INFERIOR */
+
+.footer-bottom {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 15px 5px 18px;
+  border-top: 1px solid #e3eaf5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-bottom p,
+.footer-legal {
+  color: #6685b2;
+  font-size: 10px;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal a {
+  color: #6685b2;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover {
+  color: #0872d3;
+}
+
+/* TABLETS */
+
+@media (max-width: 850px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+/* CELULARES */
+
+@media (max-width: 500px) {
+  .footer {
+    padding: 30px 6% 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 15px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 0;
+  }
+
+  .footer-bottom p {
+    line-height: 1.5;
+  }
+}

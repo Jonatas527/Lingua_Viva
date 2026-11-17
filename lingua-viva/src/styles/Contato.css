@@ -1,0 +1,686 @@
+
+/* ========================================
+   PÁGINA DE CONTATO - LÍNGUA VIVA
+======================================== */
+
+.contato-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f7fd;
+  color: #102e5c;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.contato-page .header {
+  width: 100%;
+  min-height: 90px;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(16, 46, 92, 0.05);
+}
+
+.contato-page .logo h2 {
+  margin: 0;
+  color: #102e5c;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.contato-page .logo h2 span {
+  color: #FF8A00;
+}
+
+.contato-page .logo small {
+  display: block;
+  margin-top: 3px;
+  color: #71809a;
+  font-size: 10px;
+}
+
+.contato-page .header nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.contato-page .header nav a {
+  color: #102e5c;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+
+.contato-page .header nav a:hover {
+  color: #0872d3;
+}
+
+.contato-page .header nav a:first-child,
+.contato-page .header nav a:nth-child(2) {
+  color: #102e5c;
+  font-weight: 500;
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+
+.contato-page .header nav a.contato-link-active {
+  color: #0872d3;
+  font-weight: 700;
+  border-bottom: 2px solid #0872d3;
+}
+
+/* Menu de perfis */
+
+.contato-page .menu-container {
+  position: relative;
+}
+
+.contato-page .menu-button {
+  width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 12px;
+  background: #edf4fd;
+  color: #102e5c;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contato-page .menu-button:hover {
+  background: #dcecff;
+  color: #0872d3;
+}
+
+.contato-page .dropdown-menu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 260px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(16, 46, 92, 0.14);
+  z-index: 20;
+}
+
+.contato-page .dropdown-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.contato-page .dropdown-header strong {
+  font-size: 15px;
+}
+
+.contato-page .dropdown-header small {
+  color: #71809a;
+  font-size: 11px;
+}
+
+.contato-page .dropdown-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contato-page .dropdown-options a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border-radius: 9px;
+  color: #102e5c;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.contato-page .dropdown-options a:hover {
+  background: #edf4fd;
+}
+
+.contato-page .profile-icon {
+  font-size: 17px;
+}
+
+.contato-page .profile-arrow {
+  margin-left: auto;
+  font-size: 20px;
+}
+
+/* ========================================
+   APRESENTAÇÃO DA PÁGINA
+======================================== */
+
+.contato-page .contato-hero {
+  width: 86%;
+  max-width: 1200px;
+  min-height: 230px;
+  margin: 45px auto 35px;
+  padding: 45px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: linear-gradient(120deg, #e4efff, #f0f5ff);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato-page .contato-etiqueta {
+  display: inline-block;
+  margin-bottom: 13px;
+  color: #0872d3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.contato-page .contato-hero h1 {
+  margin: 0 0 12px;
+  color: #102e5c;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.contato-page .contato-hero p {
+  max-width: 560px;
+  margin: 0;
+  color: #61728c;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   IMAGEM DE CONVERSA AMPLIADA
+======================================== */
+
+.contato-page .contato-hero-icon {
+  width: 200px;
+  height: 200px;
+  min-width: 200px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  background: transparent;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.contato-page .contato-hero-icon img {
+  width: 300px;
+  height: 300px;
+  max-width: none;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ========================================
+   ÁREA PRINCIPAL
+======================================== */
+
+.contato-page .contato-principal {
+  width: 86%;
+  max-width: 1200px;
+  margin: 0 auto 65px;
+  display: grid;
+  grid-template-columns: 1.5fr 0.85fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Formulário */
+
+.contato-page .contato-formulario {
+  padding: 35px;
+  background: #ffffff;
+  border: 1px solid #e6ebf3;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(16, 46, 92, 0.04);
+}
+
+.contato-page .contato-formulario h2 {
+  margin: 0 0 8px;
+  color: #102e5c;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.contato-page .contato-descricao {
+  margin: 0 0 25px;
+  color: #8490a3;
+  font-size: 12px;
+}
+
+/* Campos */
+
+.contato-page .contato-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contato-page .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contato-page .campo-completo {
+  grid-column: 1 / -1;
+}
+
+.contato-page .campo label {
+  color: #263f64;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.contato-page .campo input,
+.contato-page .campo select,
+.contato-page .campo textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid #dce3ed;
+  border-radius: 9px;
+  outline: none;
+  background: #fbfcfe;
+  color: #102e5c;
+  font-family: inherit;
+  font-size: 12px;
+  transition: border 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.contato-page .campo input::placeholder,
+.contato-page .campo textarea::placeholder {
+  color: #a5afbf;
+}
+
+.contato-page .campo input:focus,
+.contato-page .campo select:focus,
+.contato-page .campo textarea:focus {
+  border-color: #0872d3;
+  box-shadow: 0 0 0 3px rgba(8, 114, 211, 0.08);
+}
+
+.contato-page .campo textarea {
+  min-height: 135px;
+  resize: vertical;
+}
+
+/* Privacidade */
+
+.contato-page .contato-privacidade {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 22px 0;
+  color: #71809a;
+  font-size: 11px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+.contato-page .contato-privacidade input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: #0872d3;
+  flex-shrink: 0;
+}
+
+/* Botão enviar */
+
+.contato-page .contato-enviar {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  border-radius: 9px;
+  background: #0872d3;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.contato-page .contato-enviar:hover {
+  background: #075eaf;
+  transform: translateY(-2px);
+}
+
+.contato-page .contato-enviar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contato-page .contato-sucesso {
+  margin: 15px 0 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #e8f6ed;
+  color: #287443;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.contato-page .contato-erro {
+  margin-top: 12px;
+  color: #c62828;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.contato-page .contato-aviso {
+  display: block;
+  margin-top: 18px;
+  color: #929daf;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   INFORMAÇÕES LATERAIS
+======================================== */
+
+.contato-page .contato-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contato-page .contato-info {
+  padding: 27px;
+  background: #ffffff;
+  border: 1px solid #e6ebf3;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(16, 46, 92, 0.04);
+}
+
+.contato-page .contato-info-etiqueta {
+  color: #0872d3;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.contato-page .contato-info h2 {
+  margin: 10px 0 25px;
+  color: #102e5c;
+  font-size: 21px;
+}
+
+.contato-page .contato-info-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.contato-page .contato-info-icone {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 19px;
+}
+
+.contato-page .contato-info-icone.azul {
+  background: #e7f1ff;
+  color: #0872d3;
+}
+
+.contato-page .contato-info-icone.amarelo {
+  background: #fff4d9;
+  color: #d69b20;
+}
+
+.contato-page .contato-info-item div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contato-page .contato-info-item strong {
+  color: #263f64;
+  font-size: 12px;
+}
+
+.contato-page .contato-info-item span {
+  color: #71809a;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.contato-page .contato-info-nota {
+  margin: 10px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid #edf0f5;
+  color: #9aa5b5;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* Imagem lateral */
+
+.contato-page .contato-imagem {
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e6ebf3;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.contato-page .contato-imagem img {
+  width: 100%;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.contato-page .contato-imagem p {
+  margin: 13px 8px 8px;
+  color: #71809a;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ========================================
+   SEÇÃO DE AJUDA
+======================================== */
+
+.contato-page .contato-ajuda {
+  width: 86%;
+  max-width: 1200px;
+  margin: 0 auto 75px;
+}
+
+.contato-page .contato-ajuda h2 {
+  margin: 0 0 25px;
+  color: #102e5c;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.contato-page .contato-ajuda-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.contato-page .contato-ajuda-cards article {
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e6ebf3;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contato-page .contato-ajuda-cards article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(16, 46, 92, 0.07);
+}
+
+.contato-page .contato-ajuda-cards h3 {
+  margin: 0 0 12px;
+  color: #0872d3;
+  font-size: 15px;
+}
+
+.contato-page .contato-ajuda-cards p {
+  margin: 0;
+  color: #71809a;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.contato-page .footer {
+  width: 100%;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 900px) {
+  .contato-page .contato-principal {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-page .contato-lateral {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .contato-page .contato-ajuda-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .contato-page .header {
+    padding: 15px 5%;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .contato-page .logo h2 {
+    font-size: 23px;
+  }
+
+  .contato-page .header nav {
+    width: 100%;
+    order: 3;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .contato-page .header nav a {
+    font-size: 12px;
+  }
+
+  .contato-page .menu-container {
+    margin-left: auto;
+  }
+
+  .contato-page .contato-hero {
+    width: 90%;
+    min-height: auto;
+    margin: 25px auto;
+    padding: 30px 22px;
+    gap: 5px;
+  }
+
+  .contato-page .contato-hero h1 {
+    font-size: 29px;
+  }
+
+  .contato-page .contato-hero p {
+    font-size: 12px;
+  }
+
+  .contato-page .contato-hero-icon {
+    width: 105px;
+    height: 105px;
+    min-width: 105px;
+    margin-right: 0;
+  }
+
+  .contato-page .contato-hero-icon img {
+    width: 165px;
+    height: 165px;
+  }
+
+  .contato-page .contato-principal {
+    width: 90%;
+    margin-bottom: 45px;
+  }
+
+  .contato-page .contato-formulario {
+    padding: 23px 18px;
+  }
+
+  .contato-page .contato-formulario h2 {
+    font-size: 20px;
+  }
+
+  .contato-page .contato-campos {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-page .campo-completo {
+    grid-column: auto;
+  }
+
+  .contato-page .contato-lateral {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-page .contato-ajuda {
+    width: 90%;
+    margin-bottom: 45px;
+  }
+
+  .contato-page .contato-ajuda h2 {
+    font-size: 21px;
+  }
+
+  .contato-page .contato-ajuda-cards {
+    grid-template-columns: 1fr;
+  }
+}
