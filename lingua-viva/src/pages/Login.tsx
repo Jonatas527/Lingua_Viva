@@ -1,6 +1,8 @@
 
 import { useState, type FormEvent } from "react";
 import type { Perfil } from "../App";
+import { supabase } from "../lib/supabase";
+
 import heroImg from "../assets/images/login_ilustracao.png";
 import logoRaposa from "../assets/images/logo_raposa.png";
 import "../styles/Login.css";
@@ -40,13 +42,145 @@ function Login({ perfil, onVoltar }: LoginProps) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
-  const [lembrar, setLembrar] = useState(false);
+  const [carregando, setCarregando] = useState(false);
+  const [recuperando, setRecuperando] = useState(false);
+  const [mensagem, setMensagem] = useState("");
+  const [tipoMensagem, setTipoMensagem] = useState<
+    "sucesso" | "erro" | ""
+  >("");
 
   const informacoes = informacoesPerfil[perfil];
 
-  const enviarFormulario = (e: FormEvent<HTMLFormElement>) => {
+  const enviarFormulario = async (
+    e: FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
-    // A autenticação será implementada na próxima etapa.
+
+    setMensagem("");
+    setTipoMensagem("");
+    setCarregando(true);
+
+    try {
+      // 1. Autentica o usuário no Supabase.
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password: senha,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (!data.user) {
+        throw new Error("Não foi possível identificar sua conta.");
+      }
+
+      // 2. Busca o perfil verdadeiro cadastrado no banco.
+      const { data: dadosPerfil, error: erroPerfil } = await supabase
+        .from("profiles")
+        .select("nome, tipo_perfil")
+        .eq("id", data.user.id)
+        .single();
+
+      if (erroPerfil || !dadosPerfil) {
+        await supabase.auth.signOut();
+
+        throw new Error(
+          "Não foi possível localizar seu perfil. Entre em contato com a equipe responsável."
+        );
+      }
+
+      const perfisPermitidos: Perfil[] = [
+        "Aluno",
+        "Responsável",
+        "Professor",
+        "Gestor",
+      ];
+
+      if (
+        !perfisPermitidos.includes(
+          dadosPerfil.tipo_perfil as Perfil
+        )
+      ) {
+        await supabase.auth.signOut();
+
+        throw new Error("O perfil desta conta não é válido.");
+      }
+
+      const perfilBanco = dadosPerfil.tipo_perfil as Perfil;
+
+      // 3. Confere se o perfil escolhido corresponde ao cadastro.
+      if (perfilBanco !== perfil) {
+        await supabase.auth.signOut();
+
+        throw new Error(
+          `Esta conta está cadastrada como ${perfilBanco}. Volte e selecione esse perfil.`
+        );
+      }
+
+      // 4. Comunica ao App.tsx que a autenticação foi concluída.
+      window.dispatchEvent(
+        new CustomEvent("linguaviva:perfil-autenticado", {
+          detail: {
+            perfil: perfilBanco,
+            nome: dadosPerfil.nome,
+          },
+        })
+      );
+
+      setTipoMensagem("sucesso");
+      setMensagem("Login realizado com sucesso!");
+      
+      console.log("Usuário autenticado:", data.user.id);
+      console.log("Perfil confirmado:", perfilBanco);
+
+    } catch (error: unknown) {
+      const erro = error as Error;
+
+      setTipoMensagem("erro");
+      setMensagem(
+        erro.message === "Invalid login credentials"
+          ? "E-mail ou senha incorretos."
+          : erro.message
+      );
+    } finally {
+      setCarregando(false);
+    }
+  };
+
+  const recuperarSenha = async () => {
+    if (!email.trim()) {
+      setTipoMensagem("erro");
+      setMensagem("Digite seu e-mail para recuperar sua senha.");
+      return;
+    }
+
+    setRecuperando(true);
+    setMensagem("");
+    setTipoMensagem("");
+
+    try {
+      const { error } =
+        await supabase.auth.resetPasswordForEmail(email.trim(), {
+          redirectTo: `${window.location.origin}/`,
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      setTipoMensagem("sucesso");
+      setMensagem(
+        "Se o e-mail estiver cadastrado, você receberá as instruções para redefinir sua senha."
+      );
+    } catch (error: unknown) {
+      const erro = error as Error;
+
+      setTipoMensagem("erro");
+      setMensagem(erro.message);
+    } finally {
+      setRecuperando(false);
+    }
   };
 
   return (
@@ -102,19 +236,28 @@ function Login({ perfil, onVoltar }: LoginProps) {
         <div className="login-card">
           <div className="login-form-area">
             <div className="login-profile">
-              <span className="login-profile-icon">{informacoes.icone}</span>
-              <span className="login-profile-label">{perfil}</span>
+              <span className="login-profile-icon">
+                {informacoes.icone}
+              </span>
+              <span className="login-profile-label">
+                {perfil}
+              </span>
             </div>
 
-            <span className="login-etiqueta">SUA ÁREA LÍNGUA VIVA</span>
+            <span className="login-etiqueta">
+              SUA ÁREA LÍNGUA VIVA
+            </span>
 
             <h1>{informacoes.titulo}</h1>
 
-            <p className="login-description">{informacoes.descricao}</p>
+            <p className="login-description">
+              {informacoes.descricao}
+            </p>
 
             <form onSubmit={enviarFormulario}>
               <div className="login-field">
                 <label htmlFor="login-email">E-mail</label>
+
                 <input
                   id="login-email"
                   type="email"
@@ -122,6 +265,7 @@ function Login({ perfil, onVoltar }: LoginProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  autoComplete="email"
                 />
               </div>
 
@@ -136,13 +280,18 @@ function Login({ perfil, onVoltar }: LoginProps) {
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
                     required
+                    autoComplete="current-password"
                   />
 
                   <button
                     type="button"
                     className="login-show-password"
-                    onClick={() => setMostrarSenha((mostrar) => !mostrar)}
-                    aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                    onClick={() =>
+                      setMostrarSenha((mostrar) => !mostrar)
+                    }
+                    aria-label={
+                      mostrarSenha ? "Ocultar senha" : "Mostrar senha"
+                    }
                   >
                     {mostrarSenha ? "Ocultar" : "Mostrar"}
                   </button>
@@ -150,28 +299,53 @@ function Login({ perfil, onVoltar }: LoginProps) {
               </div>
 
               <div className="login-options">
-                <label className="login-remember">
-                  <input
-                    type="checkbox"
-                    checked={lembrar}
-                    onChange={(e) => setLembrar(e.target.checked)}
-                  />
-                  <span>Lembre de mim</span>
-                </label>
+                <span></span>
 
                 <button
                   type="button"
                   className="login-forgot"
-                  onClick={() =>
-                    alert("A recuperação de senha será implementada depois.")
-                  }
+                  onClick={recuperarSenha}
+                  disabled={recuperando}
                 >
-                  Esqueceu a senha?
+                  {recuperando
+                    ? "Enviando..."
+                    : "Esqueceu a senha?"}
                 </button>
               </div>
 
-              <button type="submit" className="login-submit">
-                Entrar na minha área <span>→</span>
+              {mensagem && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  style={{
+                    padding: "12px",
+                    marginBottom: "15px",
+                    borderRadius: "8px",
+                    background:
+                      tipoMensagem === "sucesso"
+                        ? "#e8f7ed"
+                        : "#fdecec",
+                    color:
+                      tipoMensagem === "sucesso"
+                        ? "#18733b"
+                        : "#b42318",
+                    fontSize: "14px",
+                  }}
+                >
+                  {mensagem}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="login-submit"
+                disabled={carregando}
+              >
+                {carregando
+                  ? "Verificando..."
+                  : "Entrar na minha área"}
+
+                {!carregando && <span>→</span>}
               </button>
             </form>
 

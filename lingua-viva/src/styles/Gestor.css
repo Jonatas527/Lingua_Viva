@@ -1,0 +1,599 @@
+
+/* ========================================
+   PAINEL ADMINISTRATIVO - LÍNGUAVIVA
+======================================== */
+
+.gestor-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fb;
+  font-family: 'Poppins', sans-serif;
+  color: #102e5c;
+}
+
+/* ========================================
+   MENU LATERAL
+======================================== */
+
+.gestor-sidebar {
+  width: 260px;
+  min-width: 260px;
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5ebf2;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px 20px;
+}
+
+.gestor-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 35px;
+}
+
+.gestor-logo-imagem {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.gestor-sidebar-logo h2 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #102e5c;
+  margin: 0;
+}
+
+.gestor-sidebar-logo span {
+  font-size: 10px;
+  color: #8797ac;
+}
+
+.gestor-menu-titulo {
+  display: block;
+  padding: 0 12px;
+  margin-bottom: 15px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #9aa9bc;
+  letter-spacing: 1px;
+}
+
+.gestor-sidebar-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.gestor-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #718198;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gestor-menu-item:hover {
+  background: #f0f6ff;
+  color: #0872d3;
+}
+
+.gestor-menu-item.ativo {
+  background: #eaf3ff;
+  color: #0872d3;
+  font-weight: 700;
+}
+
+.gestor-menu-icone {
+  width: 22px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.gestor-sidebar-rodape {
+  margin-top: auto;
+}
+
+.gestor-ajuda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  background: #f3f7fc;
+  border-radius: 12px;
+}
+
+.gestor-ajuda-icone {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 50%;
+  color: #0872d3;
+  font-weight: 800;
+}
+
+.gestor-ajuda strong,
+.gestor-ajuda span {
+  display: block;
+}
+
+.gestor-ajuda strong {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.gestor-ajuda div span {
+  font-size: 9px;
+  color: #8797ac;
+}
+
+.gestor-versao {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 9px;
+  color: #a5b1c0;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+.gestor-conteudo {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 38px;
+}
+
+.gestor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.gestor-breadcrumb {
+  display: block;
+  color: #91a0b4;
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+.gestor-header h1 {
+  font-size: 23px;
+  font-weight: 800;
+  color: #102e5c;
+}
+
+.gestor-header-direita {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.gestor-notificacao {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e6ecf3;
+  border-radius: 11px;
+  background: #ffffff;
+  color: #526b8a;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.gestor-notificacao span {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff8a00;
+}
+
+.gestor-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gestor-avatar {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dcecff;
+  color: #0872d3;
+  font-weight: 800;
+}
+
+.gestor-usuario strong,
+.gestor-usuario span {
+  display: block;
+}
+
+.gestor-usuario strong {
+  font-size: 11px;
+}
+
+.gestor-usuario span {
+  margin-top: 3px;
+  color: #91a0b4;
+  font-size: 9px;
+}
+
+/* ========================================
+   BOAS-VINDAS
+======================================== */
+
+.gestor-boas-vindas {
+  min-height: 155px;
+  padding: 27px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(110deg, #0d3974, #0872d3);
+  border-radius: 17px;
+  color: #ffffff;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.gestor-boas-vindas span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #c5e0ff;
+}
+
+.gestor-boas-vindas h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.gestor-boas-vindas p {
+  font-size: 11px;
+  color: #e1edff;
+}
+
+.gestor-boas-vindas-icone {
+  font-size: 75px;
+  padding-right: 30px;
+}
+
+/* ========================================
+   INDICADORES
+======================================== */
+
+.gestor-indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 30px;
+}
+
+.gestor-card-indicador {
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 14px;
+  padding: 19px;
+  box-shadow: 0 3px 12px rgba(16, 46, 92, 0.025);
+}
+
+.gestor-card-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.gestor-card-topo > span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #718198;
+}
+
+.gestor-card-icone {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.gestor-card-icone.azul {
+  background: #e6f1ff;
+  color: #0872d3;
+}
+
+.gestor-card-icone.verde {
+  background: #e5f8ee;
+  color: #16a36a;
+}
+
+.gestor-card-icone.roxo {
+  background: #f0eaff;
+  color: #8054ca;
+}
+
+.gestor-card-icone.laranja {
+  background: #fff1e5;
+  color: #f08b35;
+}
+
+.gestor-card-indicador > strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 27px;
+  color: #102e5c;
+}
+
+.gestor-card-indicador > small {
+  font-size: 9px;
+  color: #9aa8b9;
+}
+
+/* ========================================
+   SEÇÕES
+======================================== */
+
+.gestor-secao {
+  margin-bottom: 28px;
+}
+
+.gestor-secao-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+
+.gestor-secao h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #102e5c;
+}
+
+.gestor-secao p {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #91a0b4;
+}
+
+/* ========================================
+   GERENCIAMENTO
+======================================== */
+
+.gestor-gerenciamento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.gestor-gerenciamento-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 165px;
+  padding: 19px;
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 14px;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.gestor-gerenciamento-card:hover {
+  transform: translateY(-4px);
+  border-color: #a9cffa;
+  box-shadow: 0 8px 20px rgba(16, 46, 92, 0.07);
+}
+
+.gestor-gerenciamento-icone {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 13px;
+  border-radius: 10px;
+  background: #eaf3ff;
+  color: #0872d3;
+  font-size: 18px;
+}
+
+.gestor-gerenciamento-card strong {
+  font-size: 12px;
+  color: #102e5c;
+  margin-bottom: 6px;
+}
+
+.gestor-gerenciamento-card > span:not(.gestor-gerenciamento-icone) {
+  font-size: 9px;
+  color: #8c9bb0;
+}
+
+.gestor-gerenciamento-card small {
+  margin-top: auto;
+  padding-top: 13px;
+  color: #0872d3;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ========================================
+   ATIVIDADE RECENTE
+======================================== */
+
+.gestor-atividade {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 14px;
+}
+
+.gestor-atividade-vazia {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gestor-atividade-vazia > span {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.gestor-atividade-vazia strong {
+  font-size: 11px;
+  color: #526b8a;
+}
+
+.gestor-atividade-vazia p {
+  font-size: 9px;
+  color: #9aa8b9;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1100px) {
+  .gestor-indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gestor-conteudo {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 800px) {
+  .gestor-sidebar {
+    width: 210px;
+    min-width: 210px;
+  }
+
+  .gestor-gerenciamento {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gestor-layout {
+    flex-direction: column;
+  }
+
+  .gestor-sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .gestor-sidebar-logo {
+    padding-bottom: 18px;
+  }
+
+  .gestor-sidebar-rodape {
+    display: none;
+  }
+
+  .gestor-sidebar-menu nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .gestor-menu-titulo {
+    display: none;
+  }
+
+  .gestor-menu-item {
+    width: auto;
+    flex-shrink: 0;
+    padding: 10px;
+  }
+
+  .gestor-menu-item span:last-child {
+    font-size: 10px;
+  }
+
+  .gestor-conteudo {
+    padding: 20px 15px;
+  }
+
+  .gestor-header {
+    align-items: flex-start;
+  }
+
+  .gestor-header h1 {
+    font-size: 19px;
+  }
+
+  .gestor-header-direita {
+    gap: 10px;
+  }
+
+  .gestor-usuario div:last-child {
+    display: none;
+  }
+
+  .gestor-boas-vindas {
+    padding: 22px;
+  }
+
+  .gestor-boas-vindas h2 {
+    font-size: 20px;
+  }
+
+  .gestor-boas-vindas-icone {
+    padding: 0;
+    font-size: 48px;
+  }
+
+  .gestor-indicadores {
+    gap: 10px;
+  }
+
+  .gestor-card-indicador {
+    padding: 13px;
+  }
+
+  .gestor-card-topo > span {
+    font-size: 9px;
+  }
+
+  .gestor-card-indicador > strong {
+    font-size: 23px;
+  }
+}
